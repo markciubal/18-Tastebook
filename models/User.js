@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const assignmentSchema = require('./Assignment');
 const { ObjectId } = require('mongoose').Types;
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,6 +35,8 @@ const userSchema = new Schema(
     },
   }
 );
+
+userSchema.set('timestamps', true);
 
 const User = model('User', userSchema);
 
