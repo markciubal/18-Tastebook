@@ -1,12 +1,12 @@
 const { ObjectId } = require('mongoose').Types;
-const { User, Course } = require('../models');
+const { User, Thought } = require('../models');
 
-// Aggregate function to get the number of students overall
-const headCount = async () => {
-  const numberOfStudents = await Student.aggregate()
-    .count('studentCount');
-  return numberOfStudents;
-}
+// // Aggregate function to get the number of students overall
+// const headCount = async () => {
+//   const numberOfStudents = await Student.aggregate()
+//     .count('studentCount');
+//   return numberOfStudents;
+// }
 
 // Aggregate function for getting the overall grade using $avg
 const grade = async (studentId) =>
@@ -31,11 +31,10 @@ module.exports = {
       const users = await User.find();
 
       const userObject = {
-        users,
-        headCount: await headCount(),
+        users
       };
 
-      res.json(studentObj);
+      res.json(userObject);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -61,10 +60,10 @@ module.exports = {
     }
   },
   // create a new student
-  async createStudent(req, res) {
+  async createUser(req, res) {
     try {
-      const student = await Student.create(req.body);
-      res.json(student);
+      const user = await User.create(req.body);
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }

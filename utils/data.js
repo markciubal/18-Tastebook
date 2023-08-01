@@ -95,7 +95,7 @@ const getRandomThought = (int) => {
       thought: getRandomThought(thoughtsArray),
     });
   }
-  return results;
+  return thoughts;
 };
 
 // Export the functions for use in seed.js
