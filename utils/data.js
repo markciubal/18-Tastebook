@@ -80,21 +80,23 @@ const thoughtsArray = [
   'You made it.'
 ];
 
-// Get a random item given an array
+
+// Get a random item given an array.
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// Gets a random full name
+// Gets a random username.
 const getRandomUsername = () =>
   `${getRandomArrItem(names)}${getRandomArrItem(names)}` + Math.floor(Math.random() * (99 - 70 + 1) + 70);
 
-// Function to generate random assignments that we can add to student object.
+// Function to generate random thoughts that we can add to user object.
 const getRandomThought = (int) => {
   const thoughts = [];
   for (let i = 0; i < int; i++) {
     thoughts.push({
-      thought: getRandomThought(thoughtsArray),
+      thought: getRandomArrItem(thoughtsArray),
     });
   }
+  console.log(thoughts);
   return thoughts;
 };
 

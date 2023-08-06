@@ -11,8 +11,8 @@ const reactionSchema = new Schema(
       type: String,
       required: true,
       max_length: 280
-    }
-    username: {
+    },
+    user: {
       type: [{ type: ObjectId, ref: 'User' }]
     }
   },

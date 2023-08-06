@@ -20,21 +20,21 @@ connection.once('open', async () => {
 
   // Create empty array to hold the users
   const users = [];
-
+  const thoughts = getRandomThought(20);
   // Loop 20 times -- add users to the users array
   for (let i = 0; i < 20; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
-    const thoughts = getRandomThought(20);
     const username = getRandomUsername();
 
     users.push({
       username,
-      thoughts
+      email: username + '@email.com'
     });
   }
 
   // Add users to the collection and await the results
   await User.collection.insertMany(users);
+  await Thought.collection.insertMany(thoughts);
 
   // // Add thoughts to the collection and await the results
   // await thought.collection.insertOne({

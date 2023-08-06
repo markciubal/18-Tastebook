@@ -7,7 +7,7 @@ const thoughtSchema = new Schema(
     thoughtText: {
       type: String
     },
-    username: {
+    user: {
       type: [{ type: ObjectId, ref: 'User' }]
     },
     reactions: {
