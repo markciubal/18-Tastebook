@@ -8,10 +8,11 @@ const thoughtSchema = new Schema(
       type: String
     },
     user: {
-      type: [{ type: ObjectId, ref: 'User' }]
+      type: ObjectId,
+      ref: 'User'
     },
     reactions: {
-      type: [{ type: ObjectId, ref: 'Friends' }]
+      type: [{ type: ObjectId, ref: 'Reaction' }]
     }
   },
   {
@@ -21,8 +22,15 @@ const thoughtSchema = new Schema(
   }
 );
 
+thoughtSchema.set('timestamps', true);
+
+thoughtSchema.virtual('reactionCount')
+  // Getter
+  .get(function () {
+    return this.reactions.length;
+  });
+
 const Thought = model('Thought', thoughtSchema);
 
-thoughtSchema.set('timestamps', true);
 
 module.exports = Thought;

@@ -49,9 +49,7 @@ module.exports = {
       if (!thought) {
         res.status(404).json({ message: 'No thought with that ID' });
       }
-
-      await Student.deleteMany({ _id: { $in: thought.students } });
-      res.json({ message: 'Thought and students deleted!' });
+      res.json({ message: 'Thought deleted!' });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -66,7 +64,7 @@ module.exports = {
       );
 
       if (!thought) {
-        res.status(404).json({ message: 'No thought with this id!' });
+        res.status(404).json({ message: 'No thought with this ID!' });
       }
 
       res.json(thought);

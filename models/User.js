@@ -3,7 +3,6 @@ const { ObjectId } = require('mongoose').Types;
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
 // Schema to create Student model
 const userSchema = new Schema(
   {
@@ -37,6 +36,13 @@ const userSchema = new Schema(
 );
 
 userSchema.set('timestamps', true);
+
+userSchema.virtual('friendCount')
+  // Getter
+  .get(function () {
+    return this.friends.length;
+  });
+
 
 const User = model('User', userSchema);
 
